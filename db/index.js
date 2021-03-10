@@ -128,7 +128,7 @@ async function updatePost(id, fields = {}) {
         RETURNING *;
         `, Object.values(fields));
 
-        return post;
+      return post;
     } catch (error) {
       throw error;
     }
@@ -175,7 +175,7 @@ async function getUserById(userId) {
     // get their posts (use getPostsByUser)
     // then add the posts to the user object with key 'posts'
     // return the user object
-  }
+}
 
 
 module.exports = {

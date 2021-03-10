@@ -84,28 +84,25 @@ async function createInitialUsers() {
 async function createInitialPosts() {
     try {
       console.log("Starting to create posts...");
-      const [albert, sandra, glamgal] = await getAllUsers();
-     // await getUserById();
-      await getPostsByUser();
 
+      const [albert, sandra, glamgal] = await getAllUsers();
   
       await createPost({
         authorId: albert.id,
-        title: "First Post",
+        title: "Albert's First Post",
         content: "This is my first post. I hope I love writing blogs as much as I love writing them."
       });
       await createPost({
         authorId: sandra.id,
-        title: "First Post",
+        title: "Sandy's First Post",
         content: "This is my first post. I hope I love writing blogs as much as I love writing them."
       });
       await createPost({
         authorId: glamgal.id,
-        title: "First Post",
+        title: "Glam Gal's First Post",
         content: "This is my first post. I hope I love writing blogs as much as I love writing them."
       });
   
-      // a couple more
       console.log("Finished creating posts!");
     } catch(error) {
       console.error("Error creating posts!");
@@ -134,17 +131,17 @@ async function createInitialPosts() {
         const users = await getAllUsers();
         console.log("Result:", users);
 
-        console.log("Calling getAllPosts")
-        const posts = await getAllPosts();
-        console.log("Result:", posts);
-
         console.log("Calling updateUser on users[0]")
         const updateUserResult = await updateUser(users[0].id, {
             name: "Newname Sogood",
             location: "Jacksonville, FL"
         });
         console.log("Result:", updateUserResult)
-  
+
+        console.log("Calling getAllPosts");
+        const posts = await getAllPosts();
+        console.log("Result:", posts);
+
         console.log("Finished database tests!");
     } catch (error) {
         console.error("Error testing database!");
